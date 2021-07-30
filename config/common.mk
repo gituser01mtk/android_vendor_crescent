@@ -1,7 +1,7 @@
 # Allow vendor/extra to override any property by setting it first
 $(call inherit-product-if-exists, vendor/extra/product.mk)
 
-PRODUCT_BRAND ?= CrescentOS
+PRODUCT_BRAND ?= PUBG-OS
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=5
 
@@ -104,7 +104,7 @@ PRODUCT_RESTRICT_VENDOR_FILES := false
 TARGET_SCREEN_WIDTH ?= 1080
 TARGET_SCREEN_HEIGHT ?= 1920
 PRODUCT_PACKAGES += \
-    bootanimation.zip
+    pubgbootanimation.zip
 
 # AOSP packages
 PRODUCT_PACKAGES += \
@@ -116,7 +116,7 @@ PRODUCT_PACKAGES += \
     LineageSettingsProvider \
     LineageSetupWizard \
     Updater \
-    SystemUI
+    PUBG # We will only Build PUBG Mobile
 
 # Themes
 PRODUCT_PACKAGES += \
@@ -196,14 +196,14 @@ PRODUCT_VERSION_MAINTENANCE := 0
 
 # Filter out random types, so it'll reset to UNOFFICIAL
 ifeq ($(filter NIGHTLY EXPERIMENTAL OFFICIAL,$(CRESCENT_BUILDTYPE)),)
-    CRESCENT_BUILDTYPE := OFFICIAL
+    CRESCENT_BUILDTYPE := GAMING
 endif
 
-ifeq ($(CRESCENT_BUILDTYPE), OFFICIAL)
+ifeq ($(CRESCENT_BUILDTYPE), GAMING)
     CRESCENT_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(LINEAGE_BUILD)-$(CRESCENT_BUILDTYPE)
 else
 
-CRESCENT_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(LINEAGE_BUILD)-$(CRESCENT_BUILDTYPE)-$(shell date -u +%Y%m%d)
+CRESCENT_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-PUBG-EDITION-$(CRESCENT_BUILDTYPE)-$(shell date -u +%Y%m%d)
 endif
 
 PRODUCT_EXTRA_RECOVERY_KEYS += \
