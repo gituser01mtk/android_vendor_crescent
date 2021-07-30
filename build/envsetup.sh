@@ -82,7 +82,7 @@ function breakfast()
                 variant="userdebug"
             fi
 
-            lunch crescent_$target-$variant
+            lunch pubgos_$target-gaming
         fi
     fi
     return $?
